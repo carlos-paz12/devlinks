@@ -1,0 +1,218 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+:root {
+  --text-color: #fafafa;
+  --text-color-secondary: #c2c2c2;
+  --bg-color: #222222;
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-color: #f1f1f1;
+  --switch-bg-image: url(./assets/i-moon.svg);
+}
+
+.light {
+  --text-color: #0f0f0f;
+  --text-color-secondary: #444444;
+  --bg-color: #f1f1f1;
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-color: #222222;
+  --switch-bg-image: url(./assets/i-sun.svg);
+}
+
+body {
+  background: var(--bg-color);
+
+  height: 100vh;
+}
+
+body * {
+  color: var(--text-color);
+  font-family: "Inter", sans-serif;
+}
+
+#container {
+  width: 100%;
+  max-width: 588px;
+  margin: 50px auto 0 auto;
+  padding: 0 24px;
+}
+
+/* profile */
+#profile {
+  text-align: center;
+
+  padding: 24px;
+}
+
+#profile img {
+  /*
+  By default, img have display inline.
+  Inline display cannot be aligned to the center with 'margin: auto'
+  */
+  border: 2px solid var(--stroke-color);
+  border-radius: 50%;
+
+  width: 112px;
+}
+
+#profile h2 {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+#profile p {
+  color: var(--text-color-secondary);
+  font-size: 14px;
+  line-height: 24px;
+  margin-top: 5px;
+}
+
+/* switch */
+#switch {
+  position: relative;
+
+  width: 64px;
+
+  margin: 4px auto;
+}
+
+#switch button {
+  width: 32px;
+  height: 32px;
+
+  background: var(--switch-bg-color) var(--switch-bg-image) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 1;
+  transform: translateY(-50%);
+
+  animation: slide-out 0.4s;
+}
+
+.light #switch button {
+  animation: slide-in 0.4s forwards;
+}
+
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
+}
+
+#switch span {
+  display: block;
+
+  width: 64px;
+  height: 24px;
+
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  border-radius: 9999px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* links */
+#links {
+  list-style: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  padding: 24px 0;
+}
+
+#links li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 16px 24px;
+
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  border-radius: 8px;
+
+  text-decoration: none;
+  font-weight: 500;
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  transition: background 0.4s;
+}
+
+#links li a:hover {
+  background: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
+}
+
+/* social links */
+#social-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+
+  font-size: 24px;
+}
+
+#social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 16px;
+
+  border-radius: 50%;
+
+  transition: background 0.4s;
+}
+
+#social-links a:hover {
+  background: var(--highlight-color);
+}
+
+/* footer */
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+  padding: 24px 0;
+
+  font-size: 14px;
+}
+
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
+  }
+}
